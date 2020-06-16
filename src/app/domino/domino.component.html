@@ -1,0 +1,26 @@
+<div class="domino"[hcPop]="dominoMenu">
+  <div class="left" [ngClass]="'n-'+domino?.left">
+    {{domino?.left}}
+  </div>
+  <div class="divider"></div>
+  <div class="right" [ngClass]="'n-'+domino?.right">
+    {{domino?.right}}
+  </div>
+</div>
+
+<hc-pop #dominoMenu (afterOpen)="left.focus()">
+  <hc-form-field>
+    <hc-label>Left</hc-label>
+    <input hcInput [formControl]="leftControl" type="number" #left autofocus (focus)="left.select()" required min="0" max="15" />
+  </hc-form-field>
+  <hc-form-field>
+    <hc-label>Right</hc-label>
+    <input hcInput [formControl]="rightControl" type="number" #right (focus)="right.select()" required min="0" max="15" />
+  </hc-form-field>
+  <button hc-icon-button (click)="flip()">
+    <hc-icon fontSet="fa" fontIcon="fa-refresh" hcIconLg></hc-icon>
+  </button>
+  <button hc-icon-button (click)="remove()">
+    <hc-icon fontSet="fa" fontIcon="fa-trash" hcIconLg></hc-icon>
+  </button>
+</hc-pop>

@@ -1,0 +1,28 @@
+<hc-tile>
+  <hc-form-field>
+    <hc-label>Train head</hc-label>
+    <input hcInput type="number" required [formControl]="headControl" #head (focus)="head.select()">
+  </hc-form-field>
+  <button hc-button [disabled]="headControl.invalid" (click)="organize()" class="space-right">Organize</button>
+  <button hc-button [hcPop]="clearConfirm" buttonStyle="destructive" [disabled]="!dominoes.length">Clear</button>
+  <hc-pop #clearConfirm>
+    <p>
+      Clear all tiles? This action cannot be undone.
+    </p>
+    <button hc-button buttonStyle="destructive" (click)="clear(); clearConfirm.close()">Confirm</button>
+  </hc-pop>
+  <hc-chip>{{score}}</hc-chip>
+</hc-tile>
+<div *ngIf="organized?.length">
+  <ng-container *ngFor="let domino of organized">
+    <app-domino [domino]="domino" (deleted)="remove(domino)" (changed)="save()"></app-domino>
+  </ng-container>
+  <hr />
+</div>
+<div>
+  <ng-container *ngFor="let domino of unorganized">
+    <app-domino [domino]="domino" (deleted)="remove(domino)" (changed)="save()"></app-domino>
+  </ng-container>
+
+  <button hc-button (click)="newDomino()">New</button>
+</div>

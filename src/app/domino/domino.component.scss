@@ -1,0 +1,75 @@
+.domino {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  background: ivory;
+  border: solid black 1px;
+  width: 107px;
+  user-select: none;
+
+  .left, .right {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 40px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  .left {
+    transform: rotate(90deg);
+  }
+  .right {
+    transform: rotate(-90deg);
+  }
+  .divider {
+    display: inline;
+    width: 2px;
+    height:35px;
+    background: black;
+    content: ' ';
+    margin: 0 5px;
+  }
+  .n-0 {
+    color: transparent;
+  }
+  .n-1, .n-13 {
+    color: lightblue;
+  }
+  .n-2, .n-8 {
+    color: darkgreen;
+  }
+  .n-3 {
+    color: darken(pink, 5%);
+  }
+  .n-4, .n-14 {
+    color: darken(brown, 10%);
+  }
+  .n-5, .n-11 {
+    color: black;
+  }
+  .n-6 {
+    color: darken(yellow, 5%);
+    text-decoration: underline;
+  }
+  .n-7, .n-12 {
+    color: gray;
+  }
+  .n-9 {
+    color: purple;
+  }
+  .n-10 {
+    color: darken(orange, 5%);
+  }
+  .n-15 {
+    color: lighten(purple, 10%);
+  }
+}
+:host {
+  display: inline-block;
+}
