@@ -50,13 +50,18 @@ export class AppComponent implements OnInit {
 
   remove(domino: Domino) {
     if (this.organized.includes(domino)) {
+      if (this.organized[0] === domino) {
+        this.headControl.patchValue(domino.right);
+      }
       this.organized = [];
       this.unorganized = [...this.dominoes];
+
     }
     this.dominoes = this.dominoes.filter(d => d !== domino);
     this.unorganized = this.unorganized.filter(d => d !== domino);
     this.score = score(this.dominoes);
     this.save();
+    this.organize();
   }
 
   newDomino() {
@@ -75,6 +80,7 @@ export class AppComponent implements OnInit {
   }
 
   organize() {
+    if (this.headControl.value == null || this.headControl.value === '') return;
     this.organized = findIdealTrain(+this.headControl.value, this.dominoes);
     this.unorganized = this.dominoes.filter(d => !this.organized.includes(d));
   }

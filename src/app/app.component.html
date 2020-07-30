@@ -11,7 +11,7 @@
     </p>
     <button hc-button buttonStyle="destructive" (click)="clear(); clearConfirm.close()">Confirm</button>
   </hc-pop>
-  <hc-chip>{{score}}</hc-chip>
+  <hc-chip color="red">{{score}}pts</hc-chip>
 </hc-tile>
 <div *ngIf="organized?.length">
   <ng-container *ngFor="let domino of organized">
